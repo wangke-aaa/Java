@@ -1,0 +1,60 @@
+
+//通过UDP传输模式，讲一段文字数据发送过去
+
+//定义一个发送端：
+
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class UdpDemo {
+    public static void main(String[] args) throws Exception{
+        //1.创建 udp对象，通过DatagramSocket对象；
+        DatagramSocket ds=new DatagramSocket(8888);
+        
+        //2.确定数据，封装成数据包。
+        byte[] buf="udp ge lai le".getBytes();
+        DatagramPacket dp=new DatagramPacket(buf,buf.length, InetAddress.getByName("192.168.1.254"),10000);
+        
+        //3.通过send方法发送；
+        ds.send(dp);
+        
+        //4.关闭资源
+        ds.close();
+
+    }
+}
+
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
+public class UdpRace {
+
+public static void main(String[]args)throws Exception{
+
+    //1.创建udp套接字，建立端点
+    DatagramSocket ds=new DatagramSocket(10000);
+    while(true)
+    {
+        //2.定义数据包，存储数据
+        byte[] buf=new byte[1024];
+        DatagramPacket dp=new DatagramPacket(buf,buf.length);
+
+        //3.通过数据包中的receive方法将接收到的数据存入到包中。get
+        ds.receive(dp);//阻塞式方法
+
+        //4.通过数据包的方式获取其中的数据
+        String ip=dp.getAddress().getHostAddress();
+        String data=new String(dp.getData(),0,dp.getLength());
+        int port =dp.getPort();
+        System.out.println(ip+"..."+data+"..."+port);
+
+        //5.关闭资源
+        ds.close();
+
+
+    }
+        }
+}
