@@ -1,0 +1,106 @@
+/*
+普通切割
+public class Split{
+    public static void main(String[] args) {
+        String str="zhangsan . lisi . wangwu";
+        String reg="\\."; //用点的话需要转义,\\
+
+       //String reg=" +" //按照多个空格进行切割
+
+
+        String[] arr=str.split(reg);
+        System.out.println(arr.length);
+        for(String s:arr)
+            System.out.println(s);
+
+    }
+
+}*/
+
+/*
+按叠词切割
+class Split{
+    public static void main(String[] args) {
+        splitDemo("erkktyqqquizzzzzo","(.)\\1+");
+        //按照叠词切割，为了重用，小括号封装为组；通过\n(n是组的编号)形式获取
+
+    }
+
+    public static void splitDemo(String str,String reg)
+    {
+        String[] arr=str.split(reg);
+        for(String s:arr)
+            System.out.println(s);
+    }
+}
+
+
+ */
+
+
+/*
+//按叠词替换 "$"
+class Split{
+    public static void main(String[] args) {
+        String str1="qqqwwerr";
+        splitDemo(str1,"(.)\\1+","$1");
+
+    }
+
+    public static  void splitDemo(String str,String reg,String newStr){
+        str=str.replaceAll(reg,newStr);
+        System.out.println(str);
+    }
+}
+*/
+/*
+import java.util.regex.Matcher;
+import java.util.regex.*;
+//获取：
+//操作步骤：
+// 1.将正则表达式封装成对象；
+// 2.将正则便拨打时和要操作的字符串相关联；
+// 3.关联后，获得正则匹配引擎；
+// 4.通过引擎对符合规则的字符串进行操作，比如获取。
+
+
+class Split{
+    public static void main(String[] args) {
+        String str="ming ming bai bai ";
+
+        String reg="\\b[a-z]{3}\\b";//边界符//后面的数字代表取的字符数
+
+        //封装对象
+        Pattern p=Pattern.compile(reg);
+
+        //关联
+        Matcher m=p.matcher(str);
+
+        //讲规则作用到字符串中，并进行符合的子串查找；
+       // boolean b=m.find();
+        //System.out.println(b);
+        //System.out.println(m.group);//用于获取匹配后的结果
+
+        while(m.find())
+        {
+            System.out.println(m.group());
+        }
+*/
+
+/*
+//匹配
+class Split{
+    public static void main(String[] args) {
+        String str="123456";
+        String reg="[1-9]\\d{4,14}";
+
+
+
+
+                System.out.println(str.matches(reg));
+
+}}
+*/
+ */
+
+
