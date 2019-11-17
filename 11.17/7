@@ -1,0 +1,80 @@
+/*
+读取键盘录入：
+1.System.out:标准输出设备——控制台；
+2.System.in:标准输入设备，键盘;
+
+
+需求：
+通过键盘录入，当录入一行数据之后，将该数据进行打印，如果录入的数据是over,那么停止录入。
+
+
+
+readLine方法是字符流BufferedReader类的方法；
+键盘录入的read的方法是字节流InputStream;
+ */
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+/*
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+public class ReadIn {
+    public static void main(String[] args)throws IOException
+
+    {
+
+        InputStream in =System.in;
+        StringBuilder sb=new StringBuilder();
+
+       while(true)
+       {
+          int ch=in.read();
+          if(ch=='\r')
+              continue;
+          if(ch=='\n')
+          {
+              String s=sb.toString();
+              if("over".equals(s))
+                  break;
+              System.out.println(s.toUpperCase());//转成大写
+              sb.delete(0,sb.length());
+          }
+
+          else
+              sb.append((char)ch);
+
+
+
+
+       }
+    }
+}
+*/
+class ReadIn{
+public static void main(String[]args)throws IOException {
+
+    InputStream in=System.in;
+
+    //使用转换流，将字符流转换城字节流
+        InputStreamReader isr=new InputStreamReader(in);
+
+        //高效
+        BufferedReader bufr=new BufferedReader(isr);
+
+        String line=null;
+        while((line=bufr.readLine())!=null){
+            System.out.println(line);
+
+        }
+
+        bufr.close();
+        }
+
+        }
