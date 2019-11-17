@@ -1,0 +1,66 @@
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CopyTest {
+    public static void main(String[] args) throws IOException {
+        copy();
+
+    }
+
+
+    public static void copy() {
+        FileWriter fw = null;
+        FileReader fr = null;
+        try {
+            fw = new FileWriter("F:\\2019.java\\14.txt");
+            fr = new FileReader("E:\\day01\\Demo.java");
+            char[] buf = new char[1024];
+            int len = 0;
+            while ((len = fr.read(buf)) != -1) {
+                fw.write(buf, 0, len);
+
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("读写失败");
+
+        } finally {
+            if (fr != null)
+                try {
+                    fr.close();
+                } catch (IOException e) {
+
+                }
+            if (fw != null)
+                try {
+                    fw.close();
+                } catch (IOException e) {
+                }
+
+        }
+
+    }
+}
+
+
+   /* //从盘读一个字符，就往盘写一个字符
+    public static void copTwo() throws IOException {
+
+        //创建目的地
+        FileWriter fw = new FileWriter("F:\\2019.java\\12.java");
+
+        //与已有文件关联
+        FileReader fr = new FileReader("E:\\day01\\Demo.java");
+
+
+        int ch = 0;
+        while ((ch = fr.read()) != -1) {
+            fw.write(ch);
+        }
+        fw.close();
+        fr.close();
+    }
+}*/
+
+
