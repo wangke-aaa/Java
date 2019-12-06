@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<img id="im" src="i_1.png" >
+<script>
+    var number=1;
+    function fun(){
+        number++;
+        if(number>2)
+            number=1;
+
+
+    var im=document.getElementById("im");
+    im.src="i_"+number+".png";}
+
+    //定义计时器
+    setInterval(fun,3000);
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+</html>
