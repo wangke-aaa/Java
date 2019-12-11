@@ -1,0 +1,61 @@
+<%@ page import="cn.User" %>
+<%@ page import="java.util.*" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
+<head>
+    <title>页面</title>
+</head>
+<body>
+<%
+    User user=new User();
+    user.setAge(67);
+    user.setName("wang");
+    user.setBirthday(new Date());
+
+    request.setAttribute("u",user);
+
+    List list=new ArrayList();
+    list.add("io");
+    list.add("op");
+
+    request.setAttribute("list",list);
+
+    Map map=new HashMap();
+    map.put("lisi","nan");
+    map.put("gender","nv");
+    map.put("user",user);
+
+    request.setAttribute("map",map);
+
+
+
+
+
+
+
+
+
+
+
+%>
+${requestScope.u.name}<br>
+${u.name}<br>
+${requestScope.u}<br>
+${requestScope.u.birthday}<br>
+${u.str}<br>
+
+${requestScope.list}
+${list}
+${list[0]}
+
+//三种写法
+${map.gender}<br>
+${map["gender"]}<br>
+${map.user.name}
+
+
+
+
+</body>
+</html>
