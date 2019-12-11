@@ -1,0 +1,33 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+    <title>choose标签</title>
+</head>
+<body>
+
+<%--
+完成数字编号对应星期几的案例：
+1.作用域中存储一数字；
+2.使用choose标签取出数字；  switch
+3.使用when标签做数字判断；  case
+4.otherwise做其他标签的情况声明； default
+
+
+--%>
+
+<%
+    request.setAttribute("number",5);
+%>
+<c:choose>
+    <c:when test="${number==1}">一</c:when>
+    <c:when test="${number==2}">二</c:when>
+    <c:when test="${number==3}">三</c:when>
+    <c:when test="${number==4}">四</c:when>
+
+    <c:otherwise>错误</c:otherwise>
+
+</c:choose>
+
+</body>
+</html>
