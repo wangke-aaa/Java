@@ -1,0 +1,43 @@
+package test;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import domain.Person;
+import org.junit.Test;
+
+import java.io.File;
+
+public class JacksonTest {
+    //java对象转为json
+    @Test
+    public void test1() throws Exception
+    {
+        Person p=new Person();
+        p.setAge(23);
+        p.setGender("女");
+        p.setName("jjjj");
+
+        //创建JackSon核心对象 ObjectMapper
+        ObjectMapper mapper=new ObjectMapper();
+
+
+        //转换
+        //String json=mapper.writeValueAsString(p);
+       // System.out.println(json);
+  mapper.writeValue(new File("F://2019.java//a.txt"),p);
+        /*
+        转换方法：
+        1.writeValue(参数1，obj);
+          参数1：
+              File:将obj对象转换为json字符串，并保存到指定文件夹中；
+              Writer:将obj对象转换为json字符串，并将json数据填充到字符输出流中；
+              OutputStream:将obj对象转换为json字符串，并将json数据填充到字节输出流中；
+
+        2.writeValueAsString(obj):将对象转换为json字符串
+
+
+         */
+    }
+
+
+}
