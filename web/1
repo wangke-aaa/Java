@@ -1,0 +1,125 @@
+一.html
+
+1.文件标签：
+
+html:
+head:指定一些属性。引入外部资源。
+title:
+body:
+<!DOCTYPE>:声明是html文档
+【注意】:<meta charset='UTF-8'>
+
+2.文本标签：
+
+注释：<!-- -->
+<h1>to<h6>:标题标签
+<br>:换行
+<p>:段落
+<hr>：显示一条水平线
+            color.size.width.align(right.left.center)
+<b>:加粗
+<i>:斜体
+<font>：字体
+             （color.size.face(字体)）
+
+3.图片标签：注意正确路径！！！！（./    ../）
+4.列表标签：ol/ul  (li)
+5.链接标签：<a href="">
+6.块标签：<span>  ： 在一行
+                <div>  ：自动换行
+                 （都没有啥效果）便于控制样式
+7.语义化标签：<header>  <footer>  提高可读性
+8.表格标签：table :<tr>：bgcolor/alian
+                            <td>:colspan/rowsapn
+                            <th>:表头
+                   caption thead tbody tfoot :增强可读性
+9.表单标签：form（若要提交，必须指定name属性）
+                   input:通过type属性改变文本样式（默认为text）
+                             text：文本框 
+                             password：密码   
+                             radio：单选框 （name属性相同 指定value决定提交那个）
+                             checkbox：复选框  （value）
+                             checked:默认值
+                             placeholder：框框的默认值提示信息
+                             label：for和id对应
+                   select：下拉列表
+                   textarea：文本域
+
+
+       
+
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <tilte></tilte>
+</head>
+<body>
+<form action="#" method="get">
+    <label for="username">用户名：</label> <input name="username" placeholder="请输入用户名" id="username"><br>
+    <label for="password">密码：</label> <input name="password" placeholder="请输入用密码" id="password"><br>
+    性别：<input type="radio" name="gender" value="male" checked>男
+    <input type="radio" name="gender" value="female">女<br>
+    爱好：<input type="checkbox" name="hobby" value="drawing"> 画画
+    <input type="checkbox" name="hobby" value="java" checked>java<br>
+    图片：<input type="file" name="image"><br>
+    隐藏域：<input type="hidden" name="aa"><br>
+    年龄:<input type="number" name="age"><br>
+    取色器：<input type="color" name="color"><br>
+    生日：<input type="date" name="birthday"><br>
+    生日：<input type="datetime-local" name="birthday"><br>
+
+    邮箱：<input type="email" name="youxiang"><br>
+    <input type="button" value="按钮"><br>
+    <input type="submit" value="登录"><br>
+    <input type="image" src="img/icon_5.jpg"><br>
+
+    省份：<select name="province">
+    <option>--请选择--</option>
+    <option value="1">北京</option>
+    <option value="2">上海</option>
+    <option value="3">天津</option>
+    <option value="4">重庆</option>
+</select><br>
+    自述：<textarea rows="5" cols="=20" name="self"></textarea>
+
+</form>
+</body>
+</html>
+
+二.CSS
+1.名称是什么
+2.作用：便于内容与样式分离
+3.CSS与html结合方式：
+   内联：直接
+   内部:head内定义style标签  
+   外部：head引入外部：<link rel="stylesheet" herf="css/a.css">或@import "css/a.css"
+4.语法：选择器{属性名：属性值}     加分号，最后一个不用
+5.选择器：筛选极有相似特征的元素
+       （1）：基础选择器
+                1.id选择器：#id属性值{ }
+                2.元素选择器：标签名称{ }
+                3.类选择器：.class属性值{ }
+       （2）：扩展选择器
+                1.选择所有元素：*{}
+                2.并集选择器：选择器1，选择器2
+                3.子选择器：选择器1 选择器2{}
+                4.父选择器：选择器1>选择器2 {}
+                5.属性选择器：选择元素名称[属性名=属性值]{}
+                6.伪类选择器:元素:状态{}
+                            状态:
+                            link:初始状态
+                            visited:被访问过的状态
+                            active:正在访问状态
+                            hover:鼠标态悬浮状态             
+6.属性：
+1.字体.文本：font-size/color/text-align/linr-height
+2.背景：
+3.边框：border
+4.尺寸：width/height
+5.盒子模型：控制布局
+                   margin：外边距
+                   padding:内边距（默认情况下内边距会影响整个盒子的大小）
+                                 box-sizing;border-box;
+                   float: left/right;
+  
