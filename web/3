@@ -1,0 +1,121 @@
+1.概念：客户端脚本语言
+2.功能：增强页面交互，可以添加动态效果
+3.发展史：
+
+4.学什么：JavaScrpit=ECMAScript(所有客户端脚本语言标准)+JavaScript(DOM+BOM)
+
+***************************************************************************************
+一、ECMAScript:
+1.基本语法：
+  1.与html结合方式:<script></script>
+     -内部Js：可在HTML页面的任何地方
+     -外部Js：引入外部后缀名js的文件
+  2.注释：
+     -单行：//
+     -多行/* */
+  3.数据类型:
+     -原始数据类型（基本数据类型）:
+          number:整数/****小数****/NaN(not a number 一个不是数字的数字类型)
+          string：""
+          boolean：
+          null:一个对象为空的占位符
+          undefined:未定义。如果一个变量没有给初始值，会被默认为undefined.
+     -引用数据类型：对象
+       
+     ~~~~~~~~4.变量：~~~~~~~~~~~~
+     概念：一小块存储数据的内存区域。
+     注意：Java是强类型语言，JavaScript是弱类型语言。
+     语法：var 变量名=
+     
+     alert():弹框
+     document.write():输出到页面上
+     typeof():指出其数据类型
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  5.位运算：
+    1.一元运算符：++/--/+/-
+          +：带正号表示转化为number类型
+               Boolean型：true为1，false为0；
+               string型：字面值，若为字母，转化为NaN；
+               
+    2.算术运算符：
+    3.比较运算符：（返回值是boolean型）
+          类型相同：
+          类型不同：先转换(===:全等于)
+    4.逻辑运算符：
+          !:其他类型转换为boolean型：
+               number：0或NaN为假，其他为真
+               string：除了空外，其他都为真
+               null&undefined：都是false
+               对象：都是true
+    5.三元运算符：
+               
+     
+  6.流程控制语句：
+  7.JS特殊语法：
+       var关键字：写上是局部变量，不写代表全局变量
+  8.99乘法表小练习（结合html和css）
+        代码：<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        td{
+             border:1px solid;
+
+        }
+    </style>
+</head>
+   <body>
+<script>
+    document.write("<table align=center>");
+   for(var i=1;i<=9;i++)
+   {
+       document.write("<tr>");
+       for(var j=1;j<=i;j++)
+       {
+            document.write("<td>");
+           document.write(i+"*"+j+"="+(j*i)+"&nbsp;&nbsp;&nbsp;");
+           document.write("</td>");
+       }
+       document.write("<br>");
+       document.write("</tr>");
+   }
+   document.write("</table>");
+
+</script>
+
+</body>
+</html>
+
+
+
+
+2.基本对象：
+     function：函数对象
+         创建：1.function 方法名（形参）{}；*********（！！！采用）
+              2.var 方法名=function（形参）{}；
+              3.鸡肋（不管了）
+         属性：length：形参的长度  
+         特点：
+              1.形参类型 返回值类型不用写；
+              2.方法重复，不会报错，而是覆盖；
+              3.！！方法调用值与方法名有关，与形参无关
+              4.在JS中有一个内置对象，argument（数组），会接受所有实际参数，隐藏起来
+              
+              比如：
+              function fun(){
+              var sum=0;
+              for(var i=0;i<arguments.length;i++)
+              {
+                sum+=arguments[i];
+                 
+              }
+              return sum;
+   
+              }
+              
+              var sum=fun(1,2,3);
+              document.write(sum);
+              
+            

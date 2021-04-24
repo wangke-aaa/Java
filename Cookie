@@ -1,0 +1,112 @@
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+/*
+案例：
+1.访问一个Servlet,若是第一次访问：欢迎
+2.不是，返回上次访问时间；
+ */
+
+@WebServlet("/CookieDemo3")
+public class CookieDemo3 extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//设置相应的数据体的格式以及编码
+        response.setContentType("text/html;charset=utf-8");
+
+
+        //1.获取所有，判断
+        Cookie[] cs=request.getCookies();
+        boolean flag=false;
+        if(cs==null||cs.length==0||flag==false)
+        {
+            //第一次访问
+            //获取当前的时间字符串，重新设置Cookie值，重新发送
+            Date date=new Date();
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+            String str_date=sdf.format(date);
+            System.out.println("编码前："+str_date);
+
+            //URL编码：
+            str_date=URLEncoder.encode(str_date,"utf-8");
+            System.out.println("编码后："+str_date);
+            Cookie c=new Cookie("LastTime",str_date);
+
+
+            //设置存活时间
+            c.setMaxAge(60*60*24);
+            response.addCookie(c);
+
+
+
+            response.getWriter().write("欢迎首次登陆");
+
+
+
+
+
+        }
+        if(cs!=null&&cs.length>0)
+        {
+            for(Cookie c:cs){
+                String name=c.getName();
+               //判断名称是否为"LastTime"
+                if("LastTime".equals(name))
+                {
+
+                    flag=true;
+
+                    //设置Cookie的value;
+                    //获取当前的时间字符串，重新设置Cookie值，重新发送
+                    Date date=new Date();
+                    SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+                    String str_date=sdf.format(date);
+                    System.out.println("编码前："+str_date);
+
+                    //URL编码：
+                    str_date=URLEncoder.encode(str_date,"utf-8");
+                    System.out.println("编码后："+str_date);
+
+
+                    c.setValue(str_date);
+
+                    //设置存活时间
+                    c.setMaxAge(60*60*24);
+                    response.addCookie(c);
+
+
+                    //响应数据
+                    String value=c.getValue();
+                    System.out.println("解码前："+value);
+                    //URL解码：
+                    value= URLDecoder.decode(value,"utf-8");
+                    System.out.println("解码后；"+value);
+
+
+                    response.getWriter().write("欢迎回来，您上次访问时间为："+value);
+
+
+
+                    break;
+
+                }
+
+            }
+
+
+        }
+
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request, response);
+    }
+}

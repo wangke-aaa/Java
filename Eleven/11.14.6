@@ -1,0 +1,70 @@
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class TreeMapDemo {
+    public static void main(String[] args) {
+
+
+        TreeMap<String, Integer> treeMap = new TreeMap<String, Integer>();
+
+        treeMap.put("one",new Integer(1));
+        treeMap.put("two",new Integer(2));
+        treeMap.put("three",new Integer(3));
+        
+        //获取Entry集合
+        Set<Map.Entry<String,Integer>> set=treeMap.entrySet();
+
+        //遍历
+        for(Map.Entry<String,Integer>entry:set)
+
+        System.out.println(entry.getKey()+":"+entry.getValue());
+        System.out.println("---------------------------------");
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class TreeMapDemo {
+    public static void main(String[] args) {
+
+
+        TreeMap<String, Integer> treeMap = new TreeMap<String, Integer>();
+
+        treeMap.put("one",new Integer(1));
+        treeMap.put("two",new Integer(2));
+        treeMap.put("three",new Integer(3));
+        
+        //获取Entry集合
+        Set<Map.Entry<String,Integer>> set=treeMap.entrySet();
+
+        //遍历
+        for(Map.Entry<String,Integer>entry:set)
+
+        System.out.println(entry.getKey()+":"+entry.getValue());
+        System.out.println("---------------------------------");
+
+        //获取键值
+        Set<String> sett=treeMap.keySet();
+        StringBuffer buf=new StringBuffer("");
+        for(String w:sett)
+            buf.append(w+",");
+
+        String w=buf.substring(0,buf.length()-1);
+            System.out.println(w);
+
+
+    }
+}
+
+        //获取键值
+        Set<String> sett=treeMap.keySet();
+        StringBuffer buf=new StringBuffer("");
+        for(String w:sett)
+            buf.append(w+",");
+
+        String w=buf.substring(0,buf.length()-1);
+            System.out.println(w);
+
+
+    }
+}

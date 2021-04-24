@@ -1,0 +1,30 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+//需求：对user表添加一条数据
+
+public class JdbcUtilsDemo {
+
+    public static void main(String[] args) {
+        Connection coon=null;
+        PreparedStatement st=null;
+
+        try {
+     coon=JDBCUtils.getConnection();
+            String sql="insert into user values(null,?,?)";
+            st=coon.prepareStatement(sql);
+
+            st.setString(1,"cute");
+
+            st.setDouble(2,888);
+            int count=st.executeUpdate();
+            System.out.println(count);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.close(null,st,coon);
+        }
+    }
+}

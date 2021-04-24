@@ -1,0 +1,36 @@
+# BOM:将浏览器的各个部分封装为对象。
+
+     1.Navigator：浏览器对象
+     2.window：窗口对象——————-重要！！
+     3.location：地址栏对象
+     4.history：历史记录对象
+     5.screen：显示器屏幕
+     
+  1.window：
+      创建：直接用，不用创建；window引用可省略
+      属性：
+      方法：
+           1.与弹出框有关：
+            alert（）：
+            confirm():确认是否退出--------（确定发那会true，否则false---if）
+            prompt（）：显示用户输入框
+            
+           2.与打开关闭有关
+           open()：打开一个新的浏览器窗口
+           close():谁调用关谁
+           
+           3.定时器有关：
+           setTimeout():一次性的
+              参数：js代码或方法片段
+                    毫秒值
+              返回值：唯一标识，用于取消
+           clearTimeout():
+           
+           setInterval():周期
+           clearInterval():
+           
+           
+           
+   
+            
+  

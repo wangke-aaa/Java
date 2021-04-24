@@ -1,0 +1,33 @@
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/ResponseDemo")
+public class ResponseDemo extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+        //解决中文乱码(编解码不一样):告诉浏览器，该使用什么
+     //response.setHeader("content-type","text/html;charset=utf-8");（不用！！！）
+        
+        
+        
+     //简单形式：
+        response.setContentType("text/html;charset=utf-8");
+        
+        //1.获取字符输出流
+        PrintWriter pw=response.getWriter();
+
+        //2.输出数值
+        pw.write(" 你好 hello");
+
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request, response);
+    }
+}

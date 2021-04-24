@@ -1,0 +1,33 @@
+请求转发：（3种）
+
+1.setAttribute:存储数据；
+
+2.Object getAttribute:获取；
+
+3.removeAttribute:通过删除键来删除键值对
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/requestDemo1")
+public class requestDemo1 extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    
+//核心代码，通过键名得到键值，转发语句
+        request.getRequestDispatcher("/requestDemo").forward(request,response);
+        Object obj=request.getAttribute("name");
+        System.out.println(obj);
+
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request, response);
+    }
+}

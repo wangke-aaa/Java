@@ -1,0 +1,29 @@
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+
+import javax.sql.DataSource;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class DruidDemo1 {
+    public static void main(String[] args)throws Exception{
+    Properties pro=new Properties();
+    InputStream di=DruidDemo1.class.getClassLoader().getResourceAsStream("druid.properties");
+     pro.load(di);
+
+     DataSource da=DruidDataSourceFactory.createDataSource(pro);
+     Connection coon=da.getConnection();
+     System.out.println(coon);
+
+
+
+
+
+
+    }
+
+
+
+}

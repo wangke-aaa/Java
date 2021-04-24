@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery实现ajax</title>
+
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<script>
+
+
+    function fun(){
+        $.ajax({
+            url:"ajaxServlet",//请求路径
+            type:"POST", //请求方式
+            data:{"username":"jack","age":23},
+            success:function(data){
+
+                alert(data);
+        },
+
+            error:function()
+            {
+                alert("wrong");
+            },
+
+            dataType:"text" //最后一个不需要逗号
+        });
+
+
+
+
+    }
+</script>
+
+<input type="botton" value="请求" onclick()="fun()">
+
+</body>
+</html>

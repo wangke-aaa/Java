@@ -1,0 +1,25 @@
+import java.util.TreeSet;
+
+public class TreeSetDemo {
+    public static void main(String[] args) {
+        TreeSet<String> treeSet=new TreeSet<String>();
+        treeSet.add("wang");
+        treeSet.add("keke");
+        treeSet.add("haoren");
+        System.out.println(treeSet);
+        for(String str:treeSet)
+            System.out.println(str);
+
+    }
+}
+
+
+
+//运行结果
+[haoren, keke, wang]
+haoren
+keke
+wang
+
+
+//TreeSet元素按字符串顺存储

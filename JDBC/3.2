@@ -1,0 +1,105 @@
+import org.junit.Test;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+public class testDemo {
+    private JdbcTemplate tem = new JdbcTemplate(JDBCUtils.getDataSource());
+
+    //CRUD
+    //1.修改
+    //2.添加
+    //3.删除
+    //4.查询ID为1的记录，封装为MAP集合；
+    //5.查询所有记录，封装为List集合；
+    //6.查询总记录数；
+    @Test
+    public void test() {
+
+
+        //修改
+        String sql = "update user set password=2345 where password=0.0";
+        int count = tem.update(sql);
+        System.out.println(count);
+
+    }
+
+    @Test
+    public void test2() {
+
+        //添加
+
+        String sql = "insert into user(username,password) values(?,?)";
+        int count = tem.update(sql, "qunee", 678);
+        System.out.println(count);
+
+    }
+
+    @Test
+    public void test3() {
+
+        //添加
+
+        String sql = "delete from user where id=?";
+        int count = tem.update(sql, 6);
+        System.out.println(count);
+
+    }
+
+    @Test
+    public void test4() {
+
+        //Map集合：查询的结果集长度只能是1
+        //将列名封装为key,将值封装为value
+
+        String sql = "select* from user where id=?";
+        Map<String, Object> map = tem.queryForMap(sql, 7);
+        System.out.println(map);
+
+    }
+
+    @Test
+    public void test5() {
+
+        //List:
+
+
+        String sql = "select* from user ";
+        List<Map<String, Object>> list = tem.queryForList(sql);
+
+        for (Map<String, Object> maps : list)
+
+            System.out.println(maps);
+
+
+    }
+    @Test
+    public void test6() {
+
+        //将List集合封装为对象
+        String sql = "select* from user ";
+        List<UserDemo1> list=tem.query(sql, new BeanPropertyRowMapper<UserDemo1>(UserDemo1.class));
+        for(UserDemo1 user:list)
+            System.out.println(user);
+    }
+    @Test
+    public void test7() {
+
+        //查询总记录数
+        String sql = "select count(id) from user ";
+      Long list=tem.queryForObject(sql, Long.class);
+            System.out.println(list);
+    }
+
+
+
+
+
+
+
+}
